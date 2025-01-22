@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="{% static 'webapp/styles.css' %}">
+        <title>Results</title>
+    </head>
+    <body>
+        <h1>Body Recomposition Results</h1>
+        <p>Current Weight: {{ current_weight }} kg</p>
+        <p>Current Body Fat: {{ current_bf }}%</p>
+        <p>Goal Body Fat: {{ goal_bf }}%</p>
+        <p>Goal Weight: {{ goal_weight }} kg</p>
+        <p>Days to Goal: {{ days_to_goal }}</p>
+
+        <h2>Weekly Progress:</h2>
+        <ul>
+            {% for week in weekly_data %}
+            <li>Week {{ week.week }} ({{ week.date }}): 
+                Weight: {{ week.weight }} kg, Body Fat: {{ week.body_fat }}%</li>
+            {% endfor %}
+        </ul>
+
+        <a href="{% url 'index' %}">Go Back</a>
+    </body>
+</html>
